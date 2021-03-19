@@ -1,13 +1,12 @@
 <template>
-  <Login />
+    <Dashboard />
 </template>
 
 <script>
-import Login from './Auth/Login'
+import Dashboard from "./Dashboard";
 export default {
     components: {
-        Login
-    }
-
-}
+        Dashboard
+    },
+};
 </script>

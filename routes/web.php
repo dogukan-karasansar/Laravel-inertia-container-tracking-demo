@@ -14,16 +14,9 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
+Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
+    return Inertia::render('Dashboard', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
     ]);
-});
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard-container', function () {
-    return Inertia::render('Dashboard');
 })->name('container');
