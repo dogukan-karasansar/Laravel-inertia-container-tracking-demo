@@ -12,7 +12,7 @@
                 süresini bildiren ekleyip çıkartılabilen sistem.
             </div>
         </div>
-        <data-table />
+        <data-table :containers="$page.props.containers"/>
     </div>
 </template>
 
@@ -25,5 +25,8 @@ export default {
         JetApplicationLogo,
         DataTable,
     },
+   props: {
+       'containers': Object
+   }
 };
 </script>

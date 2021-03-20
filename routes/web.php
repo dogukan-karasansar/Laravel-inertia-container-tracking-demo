@@ -1,9 +1,7 @@
 <?php
 
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\ContainerTrackingController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +12,9 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
-    return Inertia::render('Dashboard', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-    ]);
-})->name('container');
+/* Route::middleware(['auth:sanctum', 'verified'])->resource('/', ContainerTrackingController::class); */
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+   Route::resource('/', ContainerTrackingController::class);
+   Route::get('container/{id}', [ContainerTrackingController::class, 'show']);
+});
